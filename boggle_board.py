@@ -34,10 +34,9 @@ class BoggleBoard:
           die_order.append(self.die[random_index])
     return die_order
 
-  def __init__(self, board=board, initialized=True):
+  def __init__(self, board=board):
     self.board = board
-    if initialized:
-      print(self.underscore)
+    print(self.underscore) # prints a blank board only when initialized
 
   def shake(self):
     self.board = []
