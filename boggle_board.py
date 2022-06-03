@@ -2,8 +2,6 @@ import string
 from random import randint
 
 class BoggleBoard:
-
-  alphabet = string.ascii_uppercase
   board = []
   underscore = "__ __ __ __\n__ __ __ __\n__ __ __ __\n__ __ __ __"
   die = {
@@ -25,6 +23,8 @@ class BoggleBoard:
     16:['H', 'L', 'N', 'N', 'R', 'Z'],
   }
   
+
+  # randomizes the order of the die in my die dictionary
   def randomize_die(self):
     die_order = []
     while len(die_order) < 16:
@@ -34,8 +34,7 @@ class BoggleBoard:
           die_order.append(self.die[random_index])
     return die_order
 
-  def __init__(self, alphabet=alphabet, board=board, initialized=True):
-    self.alphabet = alphabet
+  def __init__(self, board=board, initialized=True):
     self.board = board
     if initialized:
       print(self.underscore)
@@ -43,18 +42,16 @@ class BoggleBoard:
   def shake(self):
     self.board = []
     self.initialized = False
-    
-    randomized = self.randomize_die()
+    randomized = self.randomize_die() # calls the randomize_die function and returns the sequence the die will be in for this shake
 
    
-
-    for i in randomized:
-     
-      self.board.append(i[randint(0,5)])
+    # sets the random letters each board will have
+    for row in randomized:
+      self.board.append(row[randint(0,5)])
 
 
    
-
+    # sets up the board in each row
     scrambled_board = ""
     temp = ""
 
@@ -68,3 +65,13 @@ class BoggleBoard:
         temp = ""
 
     return scrambled_board
+
+
+# sample of what a random board will look like when shake() is called
+# notice the Qu prints nicely
+
+
+# I  D  N  O  
+# L  C  E  D  
+# J  U  Qu P  
+# I  O  E  V 
