@@ -49,11 +49,8 @@ class BoggleBoard:
    
 
     for i in randomized:
-      another_random_index = randint(0,5)
-      if i[another_random_index] == "Qu":
-        self.board.append(i[another_random_index])
-      else:
-        self.board.append(i[another_random_index])
+     
+      self.board.append(i[randint(0,5)])
 
 
    
